@@ -6,6 +6,7 @@ def crawl_directories(root_dir, log_file):
         python_log = open("python.txt", 'w')
         cpp_log = open("cpp.txt", 'w')
         js_log = open("js.txt","w")
+        c_log = open("c.txt","w")
         java_log = open("java.txt", 'w')
 
         for dirpath, dirnames, filenames in os.walk(root_dir):
@@ -20,6 +21,8 @@ def crawl_directories(root_dir, log_file):
                         python_log.write(f"{file_path} ({file_size} bytes)\n")
                     elif "c++" in filename.lower():
                         cpp_log.write(f"{file_path} ({file_size} bytes)\n")
+                    elif " c " in filename.lower():
+                        c_log.write(f"{file_path} ({file_size} bytes)\n")
                     elif "javascript" in filename.lower():
                         js_log.write(f"{file_path}  ({file_size}  bytes)\n") 
                     
@@ -29,6 +32,7 @@ def crawl_directories(root_dir, log_file):
         python_log.close()
         cpp_log.close()
         js_log.close()
+        c_log.close()
         java_log.close()
 
     print(f"Total space occupied by PDF and EPUB files: {total_size} bytes")
